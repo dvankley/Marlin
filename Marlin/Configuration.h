@@ -630,7 +630,7 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          {300, 300, 4, 25}    // (mm/sec)
+#define DEFAULT_MAX_FEEDRATE          {300, 200, 4, 25}    // (mm/sec)
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -638,7 +638,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 2000, 1000, 20, 2000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_ACCELERATION      { 2000, 500 20, 2000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -648,9 +648,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   1000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          600   // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  600    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   600    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk (mm/s)
@@ -661,7 +661,7 @@
  * value set here, it may happen instantaneously.
  */
 #define DEFAULT_XJERK                 10.0
-#define DEFAULT_YJERK                 10.0
+#define DEFAULT_YJERK                  5.0
 #define DEFAULT_ZJERK                  0.3
 #define DEFAULT_EJERK                  5.0
 
