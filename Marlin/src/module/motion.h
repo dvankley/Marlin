@@ -76,7 +76,12 @@ extern float feedrate_mm_s;
 extern int16_t feedrate_percentage;
 #define MMS_SCALED(MM_S) ((MM_S)*feedrate_percentage*0.01f)
 
-extern uint8_t active_extruder;
+// The active extruder (tool). Set with T<extruder> command.
+#if EXTRUDERS > 1
+  extern uint8_t active_extruder;
+#else
+  constexpr uint8_t active_extruder = 0;
+#endif
 
 #if HAS_HOTEND_OFFSET
   extern float hotend_offset[XYZ][HOTENDS];
@@ -306,8 +311,8 @@ void homeaxis(const AxisEnum axis);
  * Dual X Carriage / Dual Nozzle
  */
 #if ENABLED(DUAL_X_CARRIAGE) || ENABLED(DUAL_NOZZLE_DUPLICATION_MODE)
-  extern bool extruder_duplication_enabled;       // Used in Dual X mode 2
-  extern bool symmetric_duplication_mode;         // Used in Dual X mode 2
+  extern bool extruder_duplication_enabled,       // Used in Dual X mode 2
+              symmetric_duplication_mode;         // Used in Dual X mode 2
 #endif
 
 /**
@@ -318,7 +323,7 @@ void homeaxis(const AxisEnum axis);
   enum DualXMode : char {
     DXC_FULL_CONTROL_MODE,  // DUAL_X_CARRIAGE only
     DXC_AUTO_PARK_MODE,     // DUAL_X_CARRIAGE only
-    DXC_DUPLICATION_MODE,
+    DXC_DUPLICATION_MODE
   };
 
   extern DualXMode dual_x_carriage_mode;
